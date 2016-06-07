@@ -1,0 +1,16 @@
+---
+- src: ThinkNear.aerospike
+  path: roles/
+  version: v1.0.0
+
+- src: ThinkNear.aerospike-aws
+  path: roles/
+  version: v1.0.0
+
+- src: ThinkNear.aerospike-collectd
+  path: roles/
+  version: v1.1.1
+
+- src: pgolm.monit
+  path: roles/
+  version: v1.2.0
