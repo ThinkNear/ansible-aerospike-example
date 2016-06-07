@@ -1,0 +1,23 @@
+---
+- name: aerospike stack
+  hosts: localhost
+  gather_facts: no
+  tags:
+    - stack
+
+  roles:
+    - role: ThinkNear.aerospike-aws
+      aerospike_aws_stacks: aerospike_example
+
+- name: aerospike servers
+  hosts: aerospike_example
+  vars:
+    # batch_size should be 100% for updates that require the cluster to be restarted at the same time.
+    batch_size: 1
+  serial: "{{ batch_size }}"
+  become: true
+
+  roles:
+    - ThinkNear.aerospike 
+    - ThinkNear.aerospike-collectd
+    - pgolm.monit

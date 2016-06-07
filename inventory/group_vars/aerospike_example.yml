@@ -1,0 +1,43 @@
+---
+collectd_sourcename: aerospike-example
+
+aerospike_mesh_seed_addresses:
+  - REAPLACE_ME1
+  - REAPLACE_ME2
+  - REAPLACE_ME3
+  - REAPLACE_ME4
+  - REAPLACE_ME5
+aerospike_cluster_size: 2
+aerospike_service_threads: 1 # for 1 core
+aerospike_transaction_queues: 1 # for 1 core
+aerospike_transaction_threads: 1 # for 1 queue
+aerospike_namespaces:
+  - name: thinknear
+    memory_size: 2G
+    storage_engine:
+      files:
+        - /opt/aerospike/data/1
+      filesize: 4G
+      data_in_memory: true
+
+aerospike_aws_included_stacks:
+  - aerospike_example
+aerospike_aws_stack_name: aerospike-example
+aerospike_aws_s3_path_aerospike_conf: aerospike.example.conf
+aersopike_aws_s3_path_eni_attach: attach_eni.sh
+aerospike_aws_template_parameters:
+  HostedRecordName: aerospike-example.sandbox
+  InstanceType: t2.small
+  AerospikeAvailabilityZone: us-east-1b
+  KeyPair: REPLACE_ME
+  AerospikeSubnet: REPLACE_ME
+  VpcId: REPLACE_ME
+  NumberOfInstances: "{{ aerospike_cluster_size }}"
+  PrivateStaticIPs: "{{ aerospike_mesh_seed_addresses | join(',') }}"
+  ConfigS3Location: "{{ aerospike_aws_s3_bucket }}/{{ aerospike_aws_s3_path_aerospike_conf }}"
+  AerospikeAMI: "{{ aerospike_aws_ami }}"
+  AttachEniS3Location: "{{ aerospike_aws_s3_bucket }}/{{ aersopike_aws_s3_path_eni_attach }}"
+  MetricSourceName: "{{ collectd_sourcename }}"
+  HostedZoneName: "{{ aerospike_aws_route53_zone_name }}"
+aerospike_aws_tags:
+  Name: aerospike-example
