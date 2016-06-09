@@ -15,6 +15,10 @@ See [inventory/group_vars/aerospike_example.yml](https://github.com/ThinkNear/an
 
 See [inventory/group_vars/all.yml](https://github.com/ThinkNear/ansible-aerospike-example/blob/master/inventory/group_vars/all.yml) for variables that apply to the `aerospike_example` cluster in addition to any more that you add to your inventory.
 
+## Usage
+
+    ansible-playbook site.yml
+
 ## Requirements 
 
 This requires Ansible v2 and an AWS Account. Using this playbook will add charges to your account.
