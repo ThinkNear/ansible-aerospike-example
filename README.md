@@ -9,6 +9,12 @@ An example playbook that uses Thinknear's Aerospike roles to launch an Aerospike
 
   3. [aerospike-collectd](https://galaxy.ansible.com/ThinkNear/aerospike-collectd/) - An Ansible role that installs, configures, and runs collectd with the Aerospike plugin on Amazon and CentOS Linux.
 
+This example shows you how to set up inventory variables that work well with these roles.
+
+See [inventory/group_vars/aerospike_example.yml](https://github.com/ThinkNear/ansible-aerospike-example/blob/master/inventory/group_vars/aerospike_example.yml) for cluster specific variables. 
+
+See [inventory/group_vars/all.yml](https://github.com/ThinkNear/ansible-aerospike-example/blob/master/inventory/group_vars/all.yml) for variables that apply to the `aerospike_example` cluster in addition to any more that you add to your inventory.
+
 ## Requirements 
 
 This requires Ansible v2 and an AWS Account. Using this playbook will add charges to your account.
