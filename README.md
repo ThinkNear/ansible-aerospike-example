@@ -1,3 +1,8 @@
+Deprecated
+==========
+
+This example is no longer supported. It is left public only as an example.
+
 Ansible Example: Aerospike
 ==========================
 
